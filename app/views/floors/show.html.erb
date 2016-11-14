@@ -7,12 +7,27 @@
                 <%= floor.name %>
               </div>
               <div class="floor-content">
-               <%= link_to (image_tag floor.image.url(:medium), class:'img-responsive') %>
+               <%= link_to (image_tag floor.image.url(:medium), class:'img-responsive')%>
               </div>
               </div>
               <%end%> 
           <% end %>
+
+
+    <% if @floor.rooms %>
+         <% @floor.rooms.each do |room|%>
+           <div class="room">
+             <div class="user-name">
+               
+              </div>
+              <div class="room-content">
+                 <%= link_to (image_tag room.image.url(:medium), class:'img-responsive'),house_floor_rooms_path(@house.id, @floor.id, @room.id)%>
+              </div>
+             </div>
+          <%end %>
+        <% end %>
 	</div>
+  
 	<div class="form-wrapper">
          <%= form_for [@house, @floor,@floor.rooms.new], html: { class: 'form-horizontal', multipart: true } do |f| %>
           <div class="form-group">

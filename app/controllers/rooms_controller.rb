@@ -1,7 +1,8 @@
 class RoomsController < ApplicationController
  before_action :set_floor
     def index
-    	@rooms=floors.rooms.all
+    	@floor=Floor.find(params[:floor_id])
+    	@rooms=@floor.rooms
     end
 
     def new 
@@ -17,7 +18,7 @@ class RoomsController < ApplicationController
 
 		if @room.save
 			flash[:success]="U created room"
-			redirect_to [@house, @floor]
+			redirect_to [@house, @floor, @room]
 		else
 			flash[:alert]="Sorry Something happening wrong"
 			render 'new'
@@ -25,7 +26,7 @@ class RoomsController < ApplicationController
 	end
 
 	def show
-		@room=@floor.rooms.find(params[:floor_id])
+		#@room=@floor.rooms.find(params[:floor_id])
 	    @room=Room.find(params[:id])
 	end
 

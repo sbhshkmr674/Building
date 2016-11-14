@@ -1,12 +1,12 @@
 <div class="floor-bottom">
- <% if @building.floor.rooms %>
-          <% @building.floor.rooms.each do |room| %>
+ <% if @floor.rooms %>
+          <% @floor.rooms.each do |room| %>
             <div class="room">
               <div class="user-name">
-                <%= floor.floor_name %>
+                <%= @floor.name %>
               </div>
               <div class="floor-content">
-               <%= link_to (image_tag room.image.url(:medium), class:'img-responsive'), building_floor_room_path(@building.id, @floor.id, @room.id) %>
+               <%= link_to (image_tag room.image.url(:medium), class:'img-responsive') %>
               </div>
               </div>
               <%end%> 

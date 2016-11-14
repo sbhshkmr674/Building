@@ -15,7 +15,7 @@ class FloorsController < ApplicationController
 		
 		if @floor.save
 		 	flash[:success]= "Your floor is created"
-		 	redirect_to root_path
+		 	redirect_to [@house, @floor]
 		 else
 		 	flash[:alert]="Something happning wrong"
 		 	render root_path

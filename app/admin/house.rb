@@ -1,5 +1,6 @@
 ActiveAdmin.register House do
 permit_params :name, :image
+actions :all, except:[:create]
 
 form do |f|
 	f.inputs 'Admin Details' do
